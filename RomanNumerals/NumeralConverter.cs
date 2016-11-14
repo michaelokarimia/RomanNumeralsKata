@@ -1,20 +1,20 @@
-﻿namespace RomanNumerals
+﻿using System.Collections.Generic;
+
+namespace RomanNumerals
 {
     public class NumeralConverter
     {
         public string Convert(int numeral)
         {
-            var romanNumeralString = "";
+            var ruleDictionary = new Dictionary<int, string>
+            {
+                {1,"i"},
+                {2,"ii"},
+                {3,"iii"},
+                {4,"iv"}
+            };
 
-            if (numeral == 1)
-                romanNumeralString = "i";
-            if (numeral == 2)
-                romanNumeralString = "ii";
-            if (numeral == 3)
-                romanNumeralString = "iii";
-            if (numeral == 4)
-                romanNumeralString = "iv";
-            return romanNumeralString;
+            return ruleDictionary.ContainsKey(numeral) ? ruleDictionary[numeral]: "";
         }
     }
 }

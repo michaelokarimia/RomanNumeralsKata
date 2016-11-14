@@ -11,9 +11,7 @@
 
         public string Print(int numeral)
         {
-            var romanNumeralString = _converter.Convert(numeral);
-
-            return romanNumeralString;
+            return _converter.Convert(numeral);
         }
         
     }

@@ -2,14 +2,21 @@
 {
     public class NumeralPrinter
     {
+        private NumeralConverter _converter;
+
+        public NumeralPrinter()
+        {
+            _converter = new NumeralConverter();
+        }
+
         public string Print(int numeral)
         {
-            if (numeral == 1)
-                return "i";
-            if (numeral == 2)
-                return "ii";
+            string romanNumeralString = "";
+            
+            romanNumeralString = _converter.convert(numeral, romanNumeralString);
 
-            return "";
+            return romanNumeralString;
         }
+        
     }
 }

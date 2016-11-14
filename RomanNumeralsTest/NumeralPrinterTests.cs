@@ -31,6 +31,7 @@ namespace RomanNumeralsTest
 
         }
 
+        [TestCase(0,"")]
         [TestCase(1,"i")]
         [TestCase(2,"ii")]
         [TestCase(3,"iii")]

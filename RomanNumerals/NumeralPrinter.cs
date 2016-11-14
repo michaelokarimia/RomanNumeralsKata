@@ -2,9 +2,14 @@
 {
     public class NumeralPrinter
     {
-        public static string Print(int numeral)
+        public string Print(int numeral)
         {
-            return "i";
+            if (numeral == 1)
+                return "i";
+            if (numeral == 2)
+                return "ii";
+
+            return "";
         }
     }
 }

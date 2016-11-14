@@ -13,7 +13,7 @@
         {
             string romanNumeralString = "";
             
-            romanNumeralString = _converter.convert(numeral, romanNumeralString);
+            romanNumeralString = _converter.Convert(numeral, romanNumeralString);
 
             return romanNumeralString;
         }

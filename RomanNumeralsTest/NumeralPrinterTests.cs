@@ -10,6 +10,8 @@ namespace RomanNumeralsTest
 
         [TestCase(1,"i")]
         [TestCase(2,"ii")]
+        [TestCase(3,"iii")]
+        [TestCase(4,"iv")]
         [Test]
         public void Converts_1_into_i(int arabicNumeral, string expectedNumeral)
         {

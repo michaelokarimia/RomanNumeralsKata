@@ -18,7 +18,13 @@ namespace RomanNumeralsTest
                 {1,"i"},
                 {2,"ii"},
                 {3,"iii"},
-                {4,"iv"}
+                {4,"iv"},
+                {5,"v"},
+                {6,"vi"},
+                {7,"vii"},
+                {8,"viii"},
+                {9,"ix"},
+                {10,"x"},
             };
 
             _subject = new NumeralPrinter(_rules);
@@ -29,6 +35,12 @@ namespace RomanNumeralsTest
         [TestCase(2,"ii")]
         [TestCase(3,"iii")]
         [TestCase(4,"iv")]
+        [TestCase(5,"v")]
+        [TestCase(6,"vi")]
+        [TestCase(7,"vii")]
+        [TestCase(8,"viii")]
+        [TestCase(9,"ix")]
+        [TestCase(10,"x")]
         [Test]
         public void Converts_1_into_i(int arabicNumeral, string expectedNumeral)
         {

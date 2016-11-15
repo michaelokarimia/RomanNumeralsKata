@@ -32,22 +32,22 @@ namespace RomanNumeralsTest
             };
 
             Func<int, bool> IsLessThanorEqualTo10 = i => i <= 10;
-            Func<int, bool> applicableRule = _mappings1_to_10.ContainsKey + IsLessThanorEqualTo10;
+            Func<int, bool> isLessThan11 = _mappings1_to_10.ContainsKey + IsLessThanorEqualTo10;
 
-            var applicability = new Applicability(applicableRule);
+            var applicability = new Applicability(isLessThan11);
             Func<int, string> arabicNumeralToRomanNumeral = i => _mappings1_to_10.ContainsKey(i) ? _mappings1_to_10[i] : "";
 
-            var lessThan11Rule = new Rule(applicability,arabicNumeralToRomanNumeral);
+            var lessThan11 = new Rule(applicability,arabicNumeralToRomanNumeral);
 
 
-            Applicability applyfrom11to20 = new Applicability(i => i > 10 && i < 40);
+            Applicability between11and40 = new Applicability(i => i > 10 && i < 40);
             Func<int, string> printNumber11To20 = i => arabicNumeralToRomanNumeral(10) + arabicNumeralToRomanNumeral(i - 10) ;
 
 
-            var ElevenToTwentyRule = new Rule(applyfrom11to20, printNumber11To20);
+            var ElevenToTwentyRule = new Rule(between11and40, printNumber11To20);
 
             ruleList.Add(ElevenToTwentyRule);
-            ruleList.Add(lessThan11Rule);
+            ruleList.Add(lessThan11);
 
             var numeralConverter = new NumeralConverter(ruleList);
 

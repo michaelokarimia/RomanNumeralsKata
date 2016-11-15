@@ -1,26 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace RomanNumerals
 {
     public class Rule
     {
-        private Dictionary<int, string> _numeralDictionary;
         private Applicability _applicabilityTester;
+        private Func<int,string> _ruleToExecute;
 
-        public Rule(Dictionary<int, string> numeralDictionary, Applicability applicabilityTester)
+        public Rule(Applicability applicabilityTester, Func<int, string> ruleToExecute)
         {
-            _numeralDictionary = numeralDictionary;
+            
             _applicabilityTester = applicabilityTester;
+            _ruleToExecute = ruleToExecute;
         }
 
-
-        public string AppyRule(int numeral, string romanNumeralsString)
+        public string AppyRule(int numeral, string returnString)
         {
             if (IsApplicable(numeral))
             {
-                romanNumeralsString += _numeralDictionary.ContainsKey(numeral) ? _numeralDictionary[numeral] : "";
+                returnString += RuleToExecute(numeral);
             }
-            return romanNumeralsString;
+            return returnString;
+        }
+
+        private string RuleToExecute(int numeral)
+        {
+            return _ruleToExecute(numeral);
         }
 
 

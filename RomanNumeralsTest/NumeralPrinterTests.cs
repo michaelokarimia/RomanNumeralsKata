@@ -9,12 +9,12 @@ namespace RomanNumeralsTest
     public class NumeralPrinterTests
     {
         private NumeralPrinter _subject;
-        private Dictionary<int, string> _mappings;
+        private Dictionary<int, string> _mappings1_to_10;
 
         [SetUp]
         public void Setup()
         {
-            _mappings = new Dictionary<int, string>
+            _mappings1_to_10 = new Dictionary<int, string>
             {
                 {1,"i"},
                 {2,"ii"},
@@ -29,13 +29,22 @@ namespace RomanNumeralsTest
             };
 
             Func<int, bool> IsLessThanorEqualTo10 = i => i <= 10;
-            Func<int, bool> applicableRule = _mappings.ContainsKey + IsLessThanorEqualTo10;
+            Func<int, bool> applicableRule = _mappings1_to_10.ContainsKey + IsLessThanorEqualTo10;
 
             var applicability = new Applicability(applicableRule);
-            var rule = new Rule(_mappings, applicability);
+
+
+            Func<int, string> actionToExecute = i => _mappings1_to_10.ContainsKey(i) ? _mappings1_to_10[i] : "";
+
+            var lessThan11Rule = new Rule(applicability,actionToExecute);
+
+
+
+
+
 
             var ruleList = new List<Rule>();
-            ruleList.Add(rule);
+            ruleList.Add(lessThan11Rule);
 
             var numeralConverter = new NumeralConverter(ruleList);
 

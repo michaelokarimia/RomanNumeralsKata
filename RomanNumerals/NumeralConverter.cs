@@ -13,15 +13,14 @@ namespace RomanNumerals
 
         public string Convert(int numeral)
         {
-            string romanNumeralsString = "";
+            string numeralsString = "";
 
             foreach (var rule in _ruleList)
             {
-                romanNumeralsString = rule.AppyRule(numeral, romanNumeralsString);
+                numeralsString = rule.AppyRule(numeral, numeralsString);
             }
 
-
-            return romanNumeralsString;
+            return numeralsString;
         }
     }
 }

@@ -35,22 +35,19 @@ namespace RomanNumeralsTest
             Func<int, bool> applicableRule = _mappings1_to_10.ContainsKey + IsLessThanorEqualTo10;
 
             var applicability = new Applicability(applicableRule);
+            Func<int, string> arabicNumeralToRomanNumeral = i => _mappings1_to_10.ContainsKey(i) ? _mappings1_to_10[i] : "";
+
+            var lessThan11Rule = new Rule(applicability,arabicNumeralToRomanNumeral);
 
 
-            Func<int, string> actionToExecute = i => _mappings1_to_10.ContainsKey(i) ? _mappings1_to_10[i] : "";
-
-            var lessThan11Rule = new Rule(applicability,actionToExecute);
-
-            ruleList.Add(lessThan11Rule);
+            Applicability applyfrom11to20 = new Applicability(i => i > 10 && i < 40);
+            Func<int, string> printNumber11To20 = i => arabicNumeralToRomanNumeral(10) + arabicNumeralToRomanNumeral(i - 10) ;
 
 
-            Applicability applicabilityForRuleTwo = new Applicability(i => i > 10 && i < 21);
-            Func<int, string> printNumber11To20 = i => "x" + actionToExecute(i - 10) ;
-
-
-            var ElevenToTwentyRule = new Rule(applicabilityForRuleTwo, printNumber11To20);
+            var ElevenToTwentyRule = new Rule(applyfrom11to20, printNumber11To20);
 
             ruleList.Add(ElevenToTwentyRule);
+            ruleList.Add(lessThan11Rule);
 
             var numeralConverter = new NumeralConverter(ruleList);
 
@@ -79,6 +76,7 @@ namespace RomanNumeralsTest
         [TestCase(18,"xviii")]
         [TestCase(19,"xix")]
         [TestCase(20,"xx")]
+        [TestCase(21,"xxi")]
         [Test]
         public void Converts_1_into_i(int arabicNumeral, string expectedNumeral)
         {

@@ -17,7 +17,13 @@ namespace RomanNumerals
 
             foreach (var rule in _ruleList)
             {
-                numeralsString = rule.AppyRule(numeral, numeralsString);
+                while (rule.IsApplicable(numeral))
+                {
+                    var result = rule.AppyRule(numeral);
+
+                    numeralsString += result.GetStringOutput();
+                    numeral = result.GetNewNumeral();
+                }
             }
 
             return numeralsString;

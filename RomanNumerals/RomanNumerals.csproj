@@ -49,6 +49,7 @@
     <Compile Include="NumeralPrinter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rule.cs" />
+    <Compile Include="RuleResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

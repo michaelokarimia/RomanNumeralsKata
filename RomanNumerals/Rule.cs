@@ -5,31 +5,33 @@ namespace RomanNumerals
     public class Rule
     {
         private Applicability _applicabilityTester;
-        private Func<int,string> _ruleToExecute;
+        private Func<int,RuleResult> _ruleToExecute;
 
-        public Rule(Applicability applicabilityTester, Func<int, string> ruleToExecute)
+        public Rule(Applicability applicabilityTester, Func<int, RuleResult> ruleToExecute)
         {
             
             _applicabilityTester = applicabilityTester;
             _ruleToExecute = ruleToExecute;
         }
 
-        public string AppyRule(int numeral, string returnString)
+        public RuleResult AppyRule(int numeral)
         {
+            RuleResult ruleResult = new RuleResult();
+
             if (IsApplicable(numeral))
             {
-                returnString += RuleToExecute(numeral);
+                 ruleResult = RuleToExecute(numeral);
             }
-            return returnString;
+            return ruleResult;
         }
 
-        private string RuleToExecute(int numeral)
+        private RuleResult RuleToExecute(int numeral)
         {
             return _ruleToExecute(numeral);
         }
 
 
-        private bool IsApplicable(int numeral)
+        public bool IsApplicable(int numeral)
         {
             return _applicabilityTester.IsApplicable(numeral);
         }

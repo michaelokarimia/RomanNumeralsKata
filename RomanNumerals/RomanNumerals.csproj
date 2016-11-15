@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Applicability.cs" />
     <Compile Include="NumeralConverter.cs" />
     <Compile Include="NumeralPrinter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

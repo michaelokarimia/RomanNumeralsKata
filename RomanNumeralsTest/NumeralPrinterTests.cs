@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using RomanNumerals;
 
@@ -27,8 +28,13 @@ namespace RomanNumeralsTest
                 {10,"x"},
             };
 
-            var rule = new Rule(_mappings);
+            Func<int, bool> applicableRule = _mappings.ContainsKey;
+
+            var applicability = new Applicability(applicableRule);
+            var rule = new Rule(_mappings, applicability);
+
             var numeralConverter = new NumeralConverter(rule);
+
             _subject = new NumeralPrinter(numeralConverter);
 
         }

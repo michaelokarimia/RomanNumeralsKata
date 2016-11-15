@@ -5,10 +5,12 @@ namespace RomanNumerals
     public class Rule
     {
         private Dictionary<int, string> _numeralDictionary;
+        private Applicability _applicabilityTester;
 
-        public Rule(Dictionary<int, string> numeralDictionary)
+        public Rule(Dictionary<int, string> numeralDictionary, Applicability applicabilityTester)
         {
             _numeralDictionary = numeralDictionary;
+            _applicabilityTester = applicabilityTester;
         }
 
 
@@ -24,7 +26,7 @@ namespace RomanNumerals
 
         private bool IsApplicable(int numeral)
         {
-            return _numeralDictionary.ContainsKey(numeral);
+            return _applicabilityTester.IsApplicable(numeral);
         }
     }
 }

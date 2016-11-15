@@ -8,12 +8,12 @@ namespace RomanNumeralsTest
     public class NumeralPrinterTests
     {
         private NumeralPrinter _subject;
-        private Dictionary<int, string> _rules;
+        private Dictionary<int, string> _mappings;
 
         [SetUp]
         public void Setup()
         {
-            _rules = new Dictionary<int, string>
+            _mappings = new Dictionary<int, string>
             {
                 {1,"i"},
                 {2,"ii"},
@@ -27,7 +27,9 @@ namespace RomanNumeralsTest
                 {10,"x"},
             };
 
-            _subject = new NumeralPrinter(new RuleList(_rules));
+            var rule = new Rule(_mappings);
+            var numeralConverter = new NumeralConverter(rule);
+            _subject = new NumeralPrinter(numeralConverter);
 
         }
 

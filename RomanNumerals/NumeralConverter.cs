@@ -4,24 +4,19 @@ namespace RomanNumerals
 {
     public class NumeralConverter
     {
-        private RuleList _ruleList;
+        private Rule _rule;
 
-        public NumeralConverter(RuleList ruleList)
+        public NumeralConverter(Rule rule)
         {
-            _ruleList = ruleList;
+            _rule = rule;
         }
-
-        
 
         public string Convert(int numeral)
         {
             string romanNumeralsString = "";
 
-
-            romanNumeralsString = _ruleList.AppyRule(numeral, romanNumeralsString);
-            
-            
-
+            romanNumeralsString = _rule.AppyRule(numeral, romanNumeralsString);
+          
             return romanNumeralsString;
         }
     }

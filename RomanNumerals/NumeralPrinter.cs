@@ -4,9 +4,9 @@
     {
         private NumeralConverter _converter;
 
-        public NumeralPrinter(RuleList ruleList)
+        public NumeralPrinter(NumeralConverter numeralConverter)
         {
-            _converter = new NumeralConverter(ruleList);
+            _converter = numeralConverter;
         }
 
         public string Print(int numeral)

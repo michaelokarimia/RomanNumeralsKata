@@ -2,11 +2,11 @@
 
 namespace RomanNumerals
 {
-    public class RuleList
+    public class Rule
     {
         private Dictionary<int, string> _numeralDictionary;
 
-        public RuleList(Dictionary<int, string> numeralDictionary)
+        public Rule(Dictionary<int, string> numeralDictionary)
         {
             _numeralDictionary = numeralDictionary;
         }
@@ -14,13 +14,17 @@ namespace RomanNumerals
 
         public string AppyRule(int numeral, string romanNumeralsString)
         {
-            if (_numeralDictionary.ContainsKey(numeral))
+            if (IsApplicable(numeral))
             {
                 romanNumeralsString += _numeralDictionary.ContainsKey(numeral) ? _numeralDictionary[numeral] : "";
             }
             return romanNumeralsString;
         }
 
-        
+
+        private bool IsApplicable(int numeral)
+        {
+            return _numeralDictionary.ContainsKey(numeral);
+        }
     }
 }

@@ -14,6 +14,9 @@ namespace RomanNumeralsTest
         [SetUp]
         public void Setup()
         {
+            var ruleList = new List<Rule>();
+
+
             _mappings1_to_10 = new Dictionary<int, string>
             {
                 {1,"i"},
@@ -38,13 +41,16 @@ namespace RomanNumeralsTest
 
             var lessThan11Rule = new Rule(applicability,actionToExecute);
 
-
-
-
-
-
-            var ruleList = new List<Rule>();
             ruleList.Add(lessThan11Rule);
+
+
+            Applicability applicabilityForRuleTwo = new Applicability(i => i > 10 && i < 21);
+            Func<int, string> printNumber11To20 = i => "x" + actionToExecute(i - 10) ;
+
+
+            var ElevenToTwentyRule = new Rule(applicabilityForRuleTwo, printNumber11To20);
+
+            ruleList.Add(ElevenToTwentyRule);
 
             var numeralConverter = new NumeralConverter(ruleList);
 
@@ -64,6 +70,15 @@ namespace RomanNumeralsTest
         [TestCase(9,"ix")]
         [TestCase(10,"x")]
         [TestCase(11,"xi")]
+        [TestCase(12,"xii")]
+        [TestCase(13,"xiii")]
+        [TestCase(14,"xiv")]
+        [TestCase(15,"xv")]
+        [TestCase(16,"xvi")]
+        [TestCase(17,"xvii")]
+        [TestCase(18,"xviii")]
+        [TestCase(19,"xix")]
+        [TestCase(20,"xx")]
         [Test]
         public void Converts_1_into_i(int arabicNumeral, string expectedNumeral)
         {

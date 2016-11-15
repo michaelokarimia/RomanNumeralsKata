@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace RomanNumerals
+﻿namespace RomanNumerals
 {
     public class NumeralPrinter
     {
         private NumeralConverter _converter;
 
-        public NumeralPrinter(Dictionary<int,string> rules)
+        public NumeralPrinter(RuleList ruleList)
         {
-            _converter = new NumeralConverter(rules);
+            _converter = new NumeralConverter(ruleList);
         }
 
         public string Print(int numeral)

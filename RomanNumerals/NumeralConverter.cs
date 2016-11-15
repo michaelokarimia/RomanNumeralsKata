@@ -4,18 +4,25 @@ namespace RomanNumerals
 {
     public class NumeralConverter
     {
-        Dictionary<int, string> _ruleDictionary;
+        private RuleList _ruleList;
 
-        public NumeralConverter(Dictionary<int,string> ruleDictionary)
+        public NumeralConverter(RuleList ruleList)
         {
-            _ruleDictionary = ruleDictionary;
+            _ruleList = ruleList;
         }
+
+        
 
         public string Convert(int numeral)
         {
+            string romanNumeralsString = "";
+
+
+            romanNumeralsString = _ruleList.AppyRule(numeral, romanNumeralsString);
+            
             
 
-            return _ruleDictionary.ContainsKey(numeral) ? _ruleDictionary[numeral]: "";
+            return romanNumeralsString;
         }
     }
 }

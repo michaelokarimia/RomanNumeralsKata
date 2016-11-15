@@ -27,7 +27,7 @@ namespace RomanNumeralsTest
                 {10,"x"},
             };
 
-            _subject = new NumeralPrinter(_rules);
+            _subject = new NumeralPrinter(new RuleList(_rules));
 
         }
 
@@ -42,6 +42,7 @@ namespace RomanNumeralsTest
         [TestCase(8,"viii")]
         [TestCase(9,"ix")]
         [TestCase(10,"x")]
+        [TestCase(11,"xi")]
         [Test]
         public void Converts_1_into_i(int arabicNumeral, string expectedNumeral)
         {

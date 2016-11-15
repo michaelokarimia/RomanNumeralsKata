@@ -28,7 +28,11 @@ namespace RomanNumeralsTest
                 {10,"x"},
             };
 
-            Func<int, bool> applicableRule = _mappings.ContainsKey;
+
+            Func<int, bool> IsLessThanorEqualTo10 = i => i <= 10;
+            Func<int, bool> applicableRule = _mappings.ContainsKey + IsLessThanorEqualTo10;
+
+            
 
             var applicability = new Applicability(applicableRule);
             var rule = new Rule(_mappings, applicability);
